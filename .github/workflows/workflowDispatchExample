@@ -1,0 +1,12 @@
+name: Manual Deployment
+
+on:
+  workflow_dispatch:                                #workflow_dispatch event in GitHub Actions is a manual trigger for your workflows.
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+      version:
+        description: 'Version to deploy'
+        required: true
