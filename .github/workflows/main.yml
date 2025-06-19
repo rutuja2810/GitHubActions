@@ -4,10 +4,10 @@ on: [push]                                                  #Specifies the trigg
 jobs:                                                       #Groups together all the jobs that run in the learn-github-actions workflow.
   check-bats-version:                                       #Defines a job named check-bats-version
     runs-on: ubuntu-latest                                  #Configures the job to run on the latest version of an Ubuntu Linux runner.
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
+    steps:                                                  #Groups together all the steps
+      - uses: actions/checkout@v4                           #The uses keyword specifies that this step will run v4 of the actions/checkout action. This is an action that checks out your repository onto the runner, allowing you to run scripts or other actions against your code (such as build and test tools). You should use the checkout action any time your workflow will use the repository's code.
+      - uses: actions/setup-node@v4                         #This step uses the actions/setup-node@v4 action to install the specified version of the Node.js.
+        with:                                               
           node-version: '20'
-      - run: npm install -g bats
+      - run: npm install -g bats                            #The run keyword tells the job to execute a command on the runner.
       - run: bats -v
