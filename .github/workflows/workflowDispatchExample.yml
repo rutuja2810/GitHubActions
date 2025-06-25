@@ -1,18 +1,24 @@
-# .github/workflows/manual-trigger.yml
-
-name: Manual Env check
+name: Show Default GitHub Variables
 
 on:
-  workflow_dispatch:
-    inputs:
-      target_env:
-        description: 'Target environment (e.g., staging, prod)'
-        required: true
-        default: 'staging'
+  push:
+    branches:
+      - main  # or use any branch you want
+
 jobs:
   show-env:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Show all default environment variables
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Show all environment variables
         run: env
 
+      - name: Show selected GitHub Actions variables
+        run: |
+          echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+          echo "GITHUB_REF: $GITHUB_REF"
+          echo "GITHUB_SHA: $GITHUB_SHA"
+        
