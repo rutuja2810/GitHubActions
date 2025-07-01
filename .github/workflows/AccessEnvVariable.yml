@@ -1,0 +1,34 @@
+name: Deployment Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production  # This ties the job to the GitHub Environment named "production"
+    
+    env:
+      OUTSIDE_ENV_VAR: ${{ secrets.GLOBAL_SECRET }} # repo-level or org-level secret
+      GLOBAL_ENV_VAR: 'global_value'                # hardcoded repo-level value
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Access environment variables outside deployment env
+        run: |
+          echo "Outside env value: $OUTSIDE_ENV_VAR"
+          echo "Global env var: $GLOBAL_ENV_VAR"
+
+      - name: Access environment variables inside deployment environment
+        run: |
+          echo "Accessing environment-specific secret..."
+          echo "Deployment ENV Secret: $MY_SECRET"
+          echo "Deployment ENV VAR: $MY_ENV_VAR"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}    # defined in environment settings
+          MY_ENV_VAR: ${{ vars.MY_ENV_VAR }}     # GitHub environment variable
