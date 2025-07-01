@@ -32,4 +32,5 @@ jobs:
             echo "Unknown environment!"
           fi
         env:
-          DEV_ENV: ${{ vars.DEV_ENV
+          DEV_ENV: ${{ vars.DEV_ENV }}
+          PROD_ENV: ${{ vars.PROD_ENV }}
