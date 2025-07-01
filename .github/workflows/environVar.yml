@@ -1,4 +1,4 @@
-name: Print Environment Variable
+name: Print Environment Variable from Dev and Prod
 
 on:
   workflow_dispatch:
