@@ -1,13 +1,21 @@
-name: learn-github-actions                                  #The name of the workflow as it will appear in the "Actions" tab of the GitHub repository. If this field is omitted, the name of the workflow file will be used instead.
-run-name: ${{ github.actor }} is learning GitHub Actions    #The name for workflow runs generated from the workflow, which will appear in the list of workflow runs on your repository's "Actions" tab.
-on: [push]                                                  #Specifies the trigger for this workflow.
-jobs:                                                       #Groups together all the jobs that run in the learn-github-actions workflow.
-  check-bats-version:                                       #Defines a job named check-bats-version
-    runs-on: ubuntu-latest                                  #Configures the job to run on the latest version of an Ubuntu Linux runner.
-    steps:                                                  #Groups together all the steps
-      - uses: actions/checkout@v4                           #The uses keyword specifies that this step will run v4 of the actions/checkout action. This is an action that checks out your repository onto the runner, allowing you to run scripts or other actions against your code (such as build and test tools). You should use the checkout action any time your workflow will use the repository's code.
-      - uses: actions/setup-node@v4                         #This step uses the actions/setup-node@v4 action to install the specified version of the Node.js.
-        with:                                               
-          node-version: '20'
-      - run: npm install -g bats                            #The run keyword tells the job to execute a command on the runner.
-      - run: bats -v
+name: Deploy with Environment-Specific Variables
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Environment'
+        required: true
+        default: dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.env }}
+
+    steps:
+      - name: Show environment-specific variable
+        run: echo "abc value is $abc"
+        env:
+          abc: ${{ vars.abc }}
