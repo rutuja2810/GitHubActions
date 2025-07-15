@@ -1,0 +1,15 @@
+name: Test Hello World Action
+
+on: workflow_dispatch
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run custom hello world action
+        uses: ./.github/actions/hello-world
+        with:
+          name: "Abc"
