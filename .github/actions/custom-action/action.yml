@@ -1,0 +1,10 @@
+name: "Hello World Action"
+description: "A simple custom GitHub Action that greets someone"
+inputs:
+  name:
+    description: "The person to greet"
+    required: false
+    default: "World"
+runs:
+  using: "node20"
+  main: "index.js"
