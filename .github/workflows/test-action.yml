@@ -1,15 +1,13 @@
-name: Test Hello World Action
+name: My Custom Action Workflow
 
 on: workflow_dispatch
 
 jobs:
-  hello:
+  greet:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Run custom hello world action
-        uses: ./.github/actions/custom-action
-        with:
-          name: "Abc"
+      - name: Run a custom script
+        run: echo "Hello from my custom GitHub Action!"
