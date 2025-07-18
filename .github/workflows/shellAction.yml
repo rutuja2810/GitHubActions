@@ -1,0 +1,14 @@
+name: Greet Using Shell
+on: workflow_dispatch
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Greet Action
+        uses: ./.github/actions/shellAction
+        with:
+          name: "Alice"
