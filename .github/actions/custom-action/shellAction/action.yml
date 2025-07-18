@@ -1,0 +1,11 @@
+name: "Shell Script Action"
+description: "Says hello to the provided name"
+inputs:
+  name:
+    description: "Name to greet"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ./greet.sh
+      shell: bash
