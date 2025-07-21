@@ -11,4 +11,4 @@ jobs:
       - name: Say Hello
         uses: ./.github/actions/composite
         with:
-          name: "Developer"
+          name: "user"
