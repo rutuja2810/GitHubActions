@@ -1,0 +1,14 @@
+name: Test Hello Action
+
+on: workflow_dispatch
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Say Hello
+        uses: ./.github/actions/composite
+        with:
+          name: "Developer"
