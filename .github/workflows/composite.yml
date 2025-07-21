@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Say Hello
+      - name: Composite Action
         uses: ./.github/actions/composite
         with:
           name: "user"
