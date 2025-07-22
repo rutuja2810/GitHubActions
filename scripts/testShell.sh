@@ -10,3 +10,10 @@ echo "📁 You're in: $(pwd)"
 echo "🗂️ Listing files:"
 ls -l
 
+
+|
+echo $(date) >>abc.txt
+pwd >>abc.txt
+echo $GITHUB_WORKSPACE
+cat abc.txt
+
