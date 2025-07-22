@@ -11,3 +11,6 @@ jobs:
 
       - name: Run shell script
         run: bash scripts/testShell.sh
+
+      - name: Run cat command
+        run: cat abc.txt
