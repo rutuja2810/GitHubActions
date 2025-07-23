@@ -6,3 +6,5 @@ echo $GITHUB_WORKSPACE
 cat abc.txt
 df -k
 ls
+vex
+
