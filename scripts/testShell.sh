@@ -17,3 +17,7 @@ else
   echo "✅ No TODOs found."
   exit 0
 fi
+
+echo "Users and their ages:"
+awk '{ print "Name: " $1 ", Age: " $2 }' users.txt
+
